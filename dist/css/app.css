@@ -1,0 +1,151 @@
+.navigation
+{
+	padding: 15px;
+}
+
+.orders
+{
+  padding: 15px;
+}
+
+.bg-aqua
+{
+  padding-bottom: 20px;
+}
+
+.bg-green
+{
+  padding-bottom: 20px;
+}
+
+.segment-graphics {
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  font-size: 90px;
+  color: rgba(0, 0, 0, 0.15);
+  margin:10px 0 0px 10px;
+  height:80px;
+  width:80px;
+  float:left;
+}
+
+.segment-name
+{
+  display: block;
+  font-size: 18px;
+  margin: 0 0 0 70px; 
+  padding-top: 25px;
+}
+
+.segment-graphics1 {
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  font-size: 90px;
+  color: rgba(0, 0, 0, 0.15);
+  margin:10px 0 0px 10px;
+  height:50px;
+  width:50px;
+  float:left;
+}
+
+.segment-name1
+{
+  display: block;
+  font-size: 18px;
+  margin: 0 0 0 100px; 
+  padding-top: 25px;
+}
+
+.segment-amount
+{
+  display: block;
+  font-size: 36px;
+  
+  margin: -5px 0 0px 100px; 
+}
+
+.more-info-footer
+{
+	 position: relative;
+  text-align: center;
+  padding: 3px 0;
+  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+	color:#fff;
+  margin-top: 20px;
+}
+
+.small-box > .more-info-footer:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.small-box > .more-info-footer:focus {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.right_arrow
+{
+	height:14px;
+	width:14px;
+	margin-left: 5px;
+}
+
+.sidebar_menu_image
+{
+  width:18px;
+  height:18px;
+  margin-right: 5px;
+}
+
+.text_sig
+{
+width:18px;
+height:18px;
+float:left;
+margin:10px 5px 0 0;
+
+}
+
+.shopName
+{
+  display:inline;
+  padding-left: 9px;
+  padding-right: 9px;
+  width:300px;
+  border-left: 1px solid #ccc;
+}
+
+.filter_title
+{
+  color:#2196F3;
+}
+
+.summaryTitle
+{
+  font-size: 20px;
+    color: #2196f3;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.summaryDetail
+{
+  font-size: 20px;
+  text-align: center;
+  color:#2196f3;
+}
+
+.getDetailsHeading
+{
+  font-size: 18px;
+  font-weight: bold;
+  color: #2196f3;
+}

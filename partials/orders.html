@@ -1,0 +1,149 @@
+<section class="orders" ng-controller="TableController">
+    
+    <!-- <div class="row">
+        <div class="col-xs-12">
+            <h4 class="box-title">Apply Filters </h4>
+        </div>
+    </div> -->
+
+
+    <div class="row" style="padding:0 15px 0 15px">
+        
+            <div class="box">
+                <div class="box-header">
+                    <img src="dist/img/funnel.png" style="width:18px;height:18px;float:left;margin-right: 5px">
+                    <h3 class="box-title">Filters</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+
+                    <div class="col-lg-4 col-xs-12">
+                        <img src="dist/img/restaurant.png" class="text_sig" >
+                        <h4 class="box-title">Select Shop</h4>
+                        <ul class="shoplist">
+
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-xs-12">
+                        <img src="dist/img/calendar.png" class="text_sig" >
+                        <h4 class="box-title">Select Date</h4>
+                    </div>
+
+                    <div class="col-lg-4 col-xs-12">
+                        <img src="dist/img/dollar.png" class="text_sig" >
+                        <h4 class="box-title">Select Order Amount</h4>
+                    </div>
+                </div>
+
+                <button>Apply Filters</button>
+
+            </div>
+
+
+         
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Orders Data Table </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Search Filter</label>
+                            <select class="form-control" ng-model="columnFilter" ng-change="reinitialiseSearchFilter()">
+                                <option value="" disabled>Select a Filter</option>
+                                <option>Payment Id</option>
+                                <option>Order Id</option>
+                                <option>Customer Id</option>
+                                <option>Total Order Amount</option>
+                                <option>Paid To Shop</option>
+                            </select>
+                        </div>
+                    </form>
+                    <form ng-show="columnFilter=='Payment Id'|| columnFilter=='Order Id'|| columnFilter=='Customer Id'||
+                          columnFilter=='Total Order Amount' ">
+                        <div class="form-group">
+                            <label>Search for the Key</label>
+                            <div class="input-group" style="height:34px">
+                                <div class="input-group-addon" style="height:35px"><img src="dist/img/search.png" style="height:16px;width:16px;"></div>
+                                <input type="text" class="form-control" placeholder="Search data" ng-model="searchFilter" style="height:35px">
+                            </div>
+                        </div>
+                    </form>
+                    <form ng-show="columnFilter=='Paid To Shop' && columnFilter!='' ">
+                        <div class="form-group">
+                            <label>Search for a Key</label>
+                            <div class="input-group">
+                                <label style="margin-right:10px">
+                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="true" ng-model="searchPayFilter" checked> YES
+                                </label>
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="false" ng-model="searchPayFilter" checked> NO
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- 
+                            Filter:{{columnFilter}}<br />
+                            Search Filter:{{searchFilter}}<br />
+                            Search pay Filter:{{searchPayFilter}}<br />
+                            ng-show={{filterData(order)}}
+ -->
+                    <table class="table table-bordered table-striped" style="margin-bottom:10px">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Payment Id</th>
+                                <th>Order Id</th>
+                                <th>Customer Id</th>
+                                <th>Total Order Amount</th>
+                                <th>Paid To Shop</th>
+                                <th>View Order</th>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="order in filteredData">
+                            <td>
+                                {{ order.initiationTime | date:'MMM dd, yyyy hh:mm a'}}
+                            </td>
+                            <td>
+                                {{order.paymentId}}
+                            </td>
+                            <td>
+                                {{order.orderId}}
+                            </td>
+                            <td>
+                                {{order.customerId }}
+                            </td>
+                            <td>
+                                {{order.totalOrderAmount }}
+                            </td>
+                            <td>
+                                <span ng-if="order.paymentToShop">YES</span>
+                                <span ng-if="!order.paymentToShop">NO</span>
+                            </td>
+                            <td>
+                                View
+                            </td>
+                        </tr>
+                    </table>
+                    <uib-pagination ng-model="currentPage" total-items="data.length" max-size="maxSize" boundary-links="true" items-per-page="numPerPage" data-current-page="currentPage">
+                    </uib-pagination>
+                    <div class="ng-table-counts btn-group pull-right ng-scope" style="margin-top:20px">
+                        <button ng-repeat="count in counts" type="button" ng-class="{'active':getActiveButton1()==count}" ng-click="setActiveButton1(count)" class="btn btn-default">
+                            <span ng-bind="count"></span>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>

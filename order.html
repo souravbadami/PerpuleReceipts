@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html ng-app="perpule_client_dashboard">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Perpule | Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="dist/css/font-awesome.min.css">
+    <!--Ionicons -->
+    <link rel="stylesheet" href="dist/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/ng-table.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
+    <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" type="text/css" href="dist/css/app.css">
+
+    <link rel="stylesheet" type="text/css" href="dist/css/pace.css">
+    <!-- jQuery 2.1.4 -->
+    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="dist/js/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+    $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/angular.js"></script>
+    <script src="dist/js/app.min.js"></script>
+    <script src="dist/js/ui-bootstrap-tpls-1.2.5.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+    <script src="dist/js/perpule.js"></script>
+    <script src="dist/js/ng/viewOrderCtrl.js"></script>
+    <script src="dist/js/ng-table.js"></script>
+    <script src="dist/js/pace.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){       
+        });
+
+    </script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini" >
+
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <div style="height: 10%;width: 100%;text-align: center;font-size: 30px;color: #fff;">
+                <span class="logo-lg"><b>Perpule</b></span>
+                </div>
+            </nav>
+        </header>
+
+        
+        
+        <div class="content-wrapper">
+
+            <div style="font-size: 18px;color:#2196f3;padding-top: 20px;text-align: center">
+                You just used Perpule Self-Checkout.<br>
+                Download the app to bill it yourself next time.
+            </div>
+
+             <a target="_blank" href="https://play.google.com/store/apps/details?id=com.perpule.customerapp"><img src="dist/img/playstore.png" style="height:50px;text-align:center;display: block;margin-left: auto;
+                margin-right: auto;margin-top: 20px"></a>
+                          
+
+            <!-- <section ng-include="'partials/navigator.html'"></section> -->
+            <section class="orders" ng-controller="TableController">
+                <div>
+                
+                <div class="box">
+                    
+                   
+                    <div class="box-body" style="padding-bottom: 20px !important;">
+                        <div class="row" ng-show="filteredData" style="margin-left: 0px;">
+
+                            <div class="col-lg-4 col-xs-4"> 
+                                <div class="summaryDetail">{{noOfItems}} Items</div>
+                            </div>
+                            <div class="col-lg-4 col-xs-4"> 
+                                 <div class="summaryDetail">{{lastUpdateTime | date:'dd MMM , yyyy hh:mm a'}}</div>
+                               
+                            </div>
+                            <div class="col-lg-4 col-xs-4"> 
+                                <div class="summaryDetail">&#x20b9; {{totalOrderAmount |number:2}}</div>
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: center;font-weight: bold;font-size:30px;color:#2196f3;margin-top: 20px">
+                                Order Verified
+                        </div>
+                    </div> 
+                </div> 
+
+
+
+                <div class="box">
+                    <div class="box-header" style="background-color: #2196f3">
+                        <img src="dist/img/table.png" style="width:18px;height:18px;float:left;margin-right: 5px">
+                        <h3 class="box-title" style="color:#fff;"><b>Order Details</b> </h3>
+                    </div>
+                    <!-- /.box-header -->
+
+
+                    <div class="box-body" >
+
+                        <div class="row" style="margin-left: 0px;" ng-hide="filteredData">
+                            <div class="col-lg-12 col-xs-12"> 
+                                <div style="height:100px;display:flex;justify-content:center;align-items:center;font-size:20px;color:#444"><b>We are unable to fetch order try again.</b></div>
+                            </div>
+                        </div>
+
+                        <div ng-show="filteredData" class="container-fluid"> 
+
+                              <div class="row" ng-repeat="item in filteredData" ng-click="cityClicked(city.latitude,city.longitude)">
+
+                                <div class="white-background shadow" style="display:flex;margin:10px 10px 0 10px;padding: 5px ">
+                                 
+                                  <div class="col-lg-1 col-xs-2" style="padding:0;margin-right: 20px">
+                                       
+                                        <img src="{{item.productDetails.productImageUrl}}" style="height: 70px;">
+                                        
+                                  </div>
+
+                                  <div class="col-lg-11 col-xs-10" style="padding:0">
+                                       
+                                          <div style="display: block;margin-right: 20px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;margin-top: 3px;font-size: 16px;">
+                                            {{item.productDetails.productName}}
+                                          </div>
+                                          
+                                          
+                                        <div style="font-size: 12px;font-weight: bold;margin-top: 3px">
+                                          {{item.productDetails.productDescription}}
+                                        </div>
+                                        <div style="margin-top: 10px;font-size: 20px;display: inline">
+                                            &#8377; <span style="font-size: 22px;">{{item.finalPrice}}</span>
+                                        </div>
+                                        <div style="margin-top: 10px;font-size: 16px;display: inline-block">
+                                            &#8377; <span style="font-size: 16px;">{{item.shopPrice}}</span>
+                                        </div>
+                                       
+                                        <div ng-show="item.offer" style="margin-top: 10px;font-size: 20px;">
+                                            <span style="font-size: 22px;">{{item.offer}}</span>
+                                        </div>
+
+                                  </div>
+
+                                  
+                                </div>
+
+
+                              </div>
+
+                          </div>
+
+                        </div>
+                            <!-- /.box-body -->
+                </div> 
+
+                <a target="_blank" href="https://play.google.com/store/apps/details?id=com.perpule.customerapp"><img src="dist/img/playstore.png" style="height:50px;text-align:center;display: block;margin-left: auto;
+                margin-right: auto;margin-top: 20px"></a>
+                
+                 <!-- /.box -->
+                  
+
+                <!-- /.row -->
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+<!-- ./wrapper -->
+
+</body>
+
+</html>
+
+
+
