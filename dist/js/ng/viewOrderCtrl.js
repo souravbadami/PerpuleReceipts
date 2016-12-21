@@ -32,7 +32,7 @@
 
             function getOrderDetails(orderId) {
 
-                $http.get("https://29.productquery2014.appspot.com/resources/v1/orderreceipt?order="+orderId).then(
+                $http.get("http://29.productquery2014.appspot.com/resources/v1/orderreceipt?order="+orderId).then(
                     function(result)
                      { 
                      
